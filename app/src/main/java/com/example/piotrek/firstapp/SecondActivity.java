@@ -1,30 +1,25 @@
 package com.example.piotrek.firstapp;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**
- * Created by piotrek on 13.11.16.
- */
 
-public class SecondActivity extends Activity {
+public class SecondActivity  extends Activity implements View.OnClickListener {
 
-    EditText etNum1;
-    EditText etNum2;
+    EditText number1;
+    EditText number2;
 
-    Button btnAdd;
-    Button btnSub;
-    Button btnMult;
-    Button btnDiv;
+    Button addButton;
+    Button subButton;
+    Button multButton;
+    Button divButton;
 
-    TextView tvResult;
+    TextView resultView;
 
     String oper = "";
 
@@ -32,55 +27,47 @@ public class SecondActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.second_activity);
 
         // find the elements
-        etNum1 = (EditText) findViewById(R.id.etNum1);
-        etNum2 = (EditText) findViewById(R.id.etNum2);
+        number1 = (EditText) findViewById(R.id.number1);
+        number2 = (EditText) findViewById(R.id.number2);
 
-        btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        addButton = (Button) findViewById(R.id.btnAdd);
+        subButton = (Button) findViewById(R.id.btnSub);
+        multButton = (Button) findViewById(R.id.btnMult);
+        divButton = (Button) findViewById(R.id.btnDiv);
 
-            @Override
-            public void onClick(View view) {
-                +
-            }
-        });
-
-        btnSub = (Button) findViewById(R.id.btnSub);
-        btnMult = (Button) findViewById(R.id.btnMult);
-        btnDiv = (Button) findViewById(R.id.btnDiv);
-
-        tvResult = (TextView) findViewById(R.id.tvResult);
+        resultView = (TextView) findViewById(R.id.result);
 
         // set a listener
-        btnAdd.setOnClickListener(this);
-        btnSub.setOnClickListener(this);
-        btnMult.setOnClickListener(this);
-        btnDiv.setOnClickListener(this);
+        addButton.setOnClickListener(this);
+        subButton.setOnClickListener(this);
+        multButton.setOnClickListener(this);
+        divButton.setOnClickListener(this);
 
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
         // TODO Auto-generated method stub
         float num1 = 0;
         float num2 = 0;
         float result = 0;
 
         // check if the fields are empty
-        if (TextUtils.isEmpty(etNum1.getText().toString())
-                || TextUtils.isEmpty(etNum2.getText().toString())) {
+        if (TextUtils.isEmpty(number1.getText().toString())
+                || TextUtils.isEmpty(number2.getText().toString())) {
             return;
         }
 
         // read EditText and fill variables with numbers
-        num1 = Float.parseFloat(etNum1.getText().toString());
-        num2 = Float.parseFloat(etNum2.getText().toString());
+        num1 = Float.parseFloat(number1.getText().toString());
+        num2 = Float.parseFloat(number2.getText().toString());
 
         // defines the button that has been clicked and performs the corresponding operation
         // write operation into oper, we will use it later for output
-        switch (v.getId()) {
+        switch (view.getId()) {
             case R.id.btnAdd:
                 oper = "+";
                 result = num1 + num2;
@@ -102,6 +89,6 @@ public class SecondActivity extends Activity {
         }
 
         // form the output line
-        tvResult.setText(num1 + " " + oper + " " + num2 + " = " + result);
+        resultView.setText(num1 + " " + oper + " " + num2 + " = " + result);
     }
 }

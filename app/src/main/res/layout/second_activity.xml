@@ -15,7 +15,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginRight="5pt"
-            android:id="@+id/etNum1"
+            android:id="@+id/number1"
             android:layout_width="match_parent"
             android:inputType="numberDecimal">
         </EditText>
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="5pt"
-            android:id="@+id/etNum2"
+            android:id="@+id/number2"
             android:layout_width="match_parent"
             android:inputType="numberDecimal">
         </EditText>
@@ -75,7 +75,7 @@
         android:layout_marginRight="5pt"
         android:textSize="12pt"
         android:layout_marginTop="3pt"
-        android:id="@+id/tvResult"
+        android:id="@+id/result"
         android:gravity="center_horizontal">
     </TextView>
 </LinearLayout>
